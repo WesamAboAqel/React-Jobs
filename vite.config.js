@@ -8,7 +8,7 @@ export default defineConfig({
   server: {
     host: true,
     port: 5173,
-    allowedHosts: ['jobs.wesamaboaqel.xyz'],
+    allowedHosts: ['jobs.wesamaboaqel.xyz', 'wesamaboaqel.duckdns.org'],
     proxy: {
       '/api': {
         target:'http://localhost:8080',

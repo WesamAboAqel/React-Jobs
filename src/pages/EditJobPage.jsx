@@ -31,7 +31,7 @@ const EditJobPage = ({updateJobSubmit}) => {
             }
             const updatedCompany = {
                 name: companyName,
-                description: companyDescription,
+                companydescription: companyDescription,
                 contactemail: contactEmail,
                 contactphone: contactPhone
             }

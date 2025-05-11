@@ -20,8 +20,29 @@ export const jobLoader = async ({params}) => {
 
 export const JobPage = ({deleteJob}) => {
     const {id} = useParams();
-    const {job, company} = useLoaderData();
+    //console.log(id)
+    //const {job, company} = useLoaderData();
     const navigate = useNavigate();
+    const [job,setJob] = useState({});
+    const [company, setCompany] = useState({});
+    const [loading,setLoading] = useState(true)
+
+    useEffect(() => {
+      const loadData = async () => {
+      try {
+        const {job, company} = await jobLoader({params: {id}})
+        setJob(job);
+        setCompany(company)
+      }
+      catch(error){
+        console.log(error);
+      }
+      finally {
+        setLoading(false)
+      }
+    }
+    loadData();
+    },[])
 
     const onDeleteClick = (jobId) => {
         const confirm = window.confirm('Are you are you want to delete this listing?')
@@ -45,7 +66,7 @@ export const JobPage = ({deleteJob}) => {
         </Link>
       </div>
     </section>
-
+    { loading ? (<Spinner loading={loading} />) : (
     <section className="bg-indigo-50">
       <div className="container m-auto py-10 px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
@@ -89,7 +110,7 @@ export const JobPage = ({deleteJob}) => {
               <h2 className="text-2xl">{company.name}</h2>
 
               <p className="my-2">
-                {company.description}
+                {company.companydescription}
               </p>
 
               <hr className="my-4" />
@@ -123,6 +144,7 @@ export const JobPage = ({deleteJob}) => {
         </div>
       </div>
     </section>
+    )}
      </>
   
 }
