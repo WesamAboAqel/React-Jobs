@@ -14,7 +14,7 @@ const EditJobPage = ({updateJobSubmit}) => {
     const [description, setDescription] = useState(job.description);
     const [salary, setSalary] = useState(job.salary);
     const [companyName, setCompanyName] = useState(company.name);
-    const [companyDescription, setCompanyDescription] = useState(company.description);
+    const [companyDescription, setCompanyDescription] = useState(company.companydescription);
     const [contactEmail, setContactEmail] = useState(company.contactemail);
     const [contactPhone, setContactPhone] = useState(company.contactphone);
     
